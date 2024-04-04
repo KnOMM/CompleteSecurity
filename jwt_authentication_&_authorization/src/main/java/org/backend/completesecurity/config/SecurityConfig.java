@@ -39,7 +39,7 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry ->
                         authorizationManagerRequestMatcherRegistry
-                                .requestMatchers("/api/v1/login").permitAll()
+                                .requestMatchers("/api/v1/login","/api/v1/refreshToken").permitAll()
                                 .requestMatchers("/api/v1/**").authenticated()
                 )
 

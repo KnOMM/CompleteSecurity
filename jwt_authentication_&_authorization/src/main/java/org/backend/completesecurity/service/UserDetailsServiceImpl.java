@@ -1,6 +1,6 @@
 package org.backend.completesecurity.service;
 
-import org.backend.completesecurity.entity.CustomUserDetails;
+import org.backend.completesecurity.utils.CustomUserDetails;
 import org.backend.completesecurity.entity.UserInfo;
 import org.backend.completesecurity.repository.UserRepository;
 import org.slf4j.Logger;

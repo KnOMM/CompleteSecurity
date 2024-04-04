@@ -1,7 +1,9 @@
-package org.backend.completesecurity.entity;
+package org.backend.completesecurity.utils;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.backend.completesecurity.entity.UserInfo;
+import org.backend.completesecurity.entity.UserRole;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
