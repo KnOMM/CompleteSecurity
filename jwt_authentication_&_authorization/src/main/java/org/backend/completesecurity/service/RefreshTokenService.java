@@ -28,10 +28,33 @@ public class RefreshTokenService {
                 .expiryDate(Instant.now().plusMillis(600000)) // 10 min
                 .build();
         if (refreshTokenRepository.findByUserInfo(byUsername).isPresent()) {
-            return refreshTokenRepository.findByUserInfo(byUsername).get();
+            refreshTokenRepository.deleteByUserInfo(byUsername);
+            return refreshTokenRepository.save(refreshToken);
         }
         return refreshTokenRepository.save(refreshToken);
     }
+
+
+    public void deleteRefreshToken(UserInfo userInfo) {
+        refreshTokenRepository.deleteByUserInfo(userInfo);
+//        System.out.println(refreshTokenRepository.findAll());
+        return;
+    }
+//
+//    public RefreshToken createRefreshToken(String username) {
+//        UserInfo byUsername = userRepository.findByUsername(username);
+//        RefreshToken refreshToken = RefreshToken.builder()
+//                .userInfo(byUsername)
+//                .token(UUID.randomUUID().toString())
+//                .expiryDate(Instant.now().plusMillis(600000)) // 10 min
+//                .build();
+//        if (refreshTokenRepository.findByUserInfo(byUsername).isPresent()) {
+//            deleteRefreshToken(byUsername);
+////            refreshTokenRepository.deleteRefreshTokenById(refreshTokenRepository.findByUserInfo(byUsername).get().getId());
+//            return refreshTokenRepository.save(refreshToken);
+//        }
+//        return refreshTokenRepository.save(refreshToken);
+//    }
 
     public Optional<RefreshToken> findByToken(String token) {
         return refreshTokenRepository.findByToken(token);

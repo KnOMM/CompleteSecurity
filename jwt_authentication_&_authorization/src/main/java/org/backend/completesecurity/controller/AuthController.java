@@ -7,6 +7,8 @@ import org.backend.completesecurity.dto.AuthRequestDTO;
 import org.backend.completesecurity.dto.JwtResponseDTO;
 import org.backend.completesecurity.dto.RefreshTokenRequestDTO;
 import org.backend.completesecurity.entity.RefreshToken;
+import org.backend.completesecurity.entity.UserInfo;
+import org.backend.completesecurity.repository.UserRepository;
 import org.backend.completesecurity.service.InMemoryTokenBlacklist;
 import org.backend.completesecurity.service.JwtService;
 import org.backend.completesecurity.service.RefreshTokenService;
@@ -35,6 +37,9 @@ public class AuthController {
 
     @Autowired
     private final InMemoryTokenBlacklist tokenBlacklist;
+
+    @Autowired
+    private final UserRepository userRepository;
 
     @PostMapping("/login")
     public JwtResponseDTO authenticateAndGetToken(@RequestBody AuthRequestDTO authRequestDTO) {
@@ -66,9 +71,17 @@ public class AuthController {
     }
 
     @PostMapping("/logout")
-    public  ResponseEntity<String> logout(HttpServletRequest request) {
+    public  ResponseEntity<String> logout(HttpServletRequest request, Authentication authentication) {
         String token = JwtAuthFilter.extractTokenFromRequest(request);
         tokenBlacklist.addToBlacklist(token);
+        if (authentication != null){
+            UserInfo userInfo = userRepository.findByUsername(
+                    ((UserInfo)authentication.getPrincipal())
+                            .getUsername()
+            );
+            refreshTokenService.deleteRefreshToken(userInfo);
+        }
+
         return ResponseEntity.ok("Logged out successfully!!!");
     }
 
