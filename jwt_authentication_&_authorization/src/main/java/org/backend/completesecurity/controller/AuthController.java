@@ -17,7 +17,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -74,10 +73,11 @@ public class AuthController {
     }
 
 
-//    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/ping")
-    public String test() {
+    public String test(Authentication authentication) {
         try {
+//            return authentication.getAuthorities().toString();
             return "Welcome";
         } catch (Exception e) {
             throw new RuntimeException(e);
