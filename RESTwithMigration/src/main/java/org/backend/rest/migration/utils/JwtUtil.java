@@ -18,20 +18,19 @@ import javax.naming.AuthenticationException;
 @Component
 public class JwtUtil {
 
-    @Value("${jwt.custom.secret}")
-    private String secret_key;
-    private long accessTokenValidity = 60 * 60 * 1000; // 1 hour
+    @Value("${spring.security.custom.jwt.secret}") // won't work as it's injected later than used
+    private String secret_key = "54ds6f654s3d54fa5dsfera6534d1f635a46e354r3ad";
+    private final long accessTokenValidity = 60 * 60 * 1000; // 1 hour
     private final JwtParser jwtParser;
     private final String TOKEN_HEADER = "Authorization";
     private final String TOKEN_PREFIX = "Bearer ";
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(JwtUtil.class);
 
     public JwtUtil() {
         this.jwtParser = Jwts.parser().setSigningKey(secret_key);
     }
 
     public String createToken(User user) {
+
         Claims claims = Jwts.claims()
                 .setSubject(user.getEmail());
         claims.put("firstName", user.getFirstName());
