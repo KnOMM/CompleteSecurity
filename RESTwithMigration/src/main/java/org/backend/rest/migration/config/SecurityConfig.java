@@ -1,7 +1,7 @@
 package org.backend.rest.migration.config;
 
 import lombok.RequiredArgsConstructor;
-import org.backend.rest.migration.model.service.CustomUserDetailsService;
+import org.backend.rest.migration.service.CustomUserDetailsService;
 import org.backend.rest.migration.utils.JwtAuthorizationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
