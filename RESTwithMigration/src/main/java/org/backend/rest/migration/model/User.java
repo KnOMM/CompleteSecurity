@@ -1,12 +1,9 @@
 package org.backend.rest.migration.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import jakarta.persistence.Id;
 
 import java.sql.Date;
 
@@ -18,6 +15,7 @@ import java.sql.Date;
 public class User {
     @Id
     @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(name = "EMAIL")
     private String email;
