@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="305228b0-4114-47d9-a15f-80297f0cdf51" name="Changes" comment="flyway &amp; additional apis">
+      <change afterPath="$PROJECT_DIR$/.idea/CompleteSecurity.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/182485fa-6b34-4a37-9dc6-2b593f81938b.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/182485fa-6b34-4a37-9dc6-2b593f81938b/storage_v2/_src_/database/postgres.edMnLQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/182485fa-6b34-4a37-9dc6-2b593f81938b/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/182485fa-6b34-4a37-9dc6-2b593f81938b/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/182485fa-6b34-4a37-9dc6-2b593f81938b/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/182485fa-6b34-4a37-9dc6-2b593f81938b/storage_v2/_src_/database/testdb.kHS3yw.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/182485fa-6b34-4a37-9dc6-2b593f81938b/storage_v2/_src_/database/testdb.kHS3yw/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/182485fa-6b34-4a37-9dc6-2b593f81938b/storage_v2/_src_/database/testdb.kHS3yw/schema/information_schema.FNRwLQ.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/182485fa-6b34-4a37-9dc6-2b593f81938b/storage_v2/_src_/database/testdb.kHS3yw/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/182485fa-6b34-4a37-9dc6-2b593f81938b/storage_v2/_src_/database/testdb.kHS3yw/schema/pg_catalog.0S1ZNQ.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/182485fa-6b34-4a37-9dc6-2b593f81938b/storage_v2/_src_/database/testdb.kHS3yw/schema/public.abK9xQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/182485fa-6b34-4a37-9dc6-2b593f81938b/storage_v2/_src_/database/testdb.kHS3yw/schema/testdb.kHS3yw.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JDBCandJPA/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JDBCandJPA/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JDBCandJPA/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JDBCandJPA/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JDBCandJPA/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JDBCandJPA/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JDBCandJPA/src/main/java/org/backend/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JDBCandJPA/src/main/java/org/example/jdbcandjpa/JdbCandJpaApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JDBCandJPA/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JDBCandJPA/src/test/java/org/example/jdbcandjpa/JdbCandJpaApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jwt_authentication_&amp;_authorization/src/main/java/org/backend/completesecurity/CompleteSecurityApplication.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2eVauwkD1EpfkCZaX3ebniFzv4D" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.RoleRepositoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RoleRepositoryTest.testAssignUserToRole.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RoleRepositoryTest.testCreateUserRoles.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserRepositoryTest.testCreatUser.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.CompleteSecurityApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.RedisCacheApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ResTwithMigrationApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/knomm/Desktop/IdeaProjects/CompleteSecurity&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="MicronautRunConfigurationType" />
+        <option value="QuarkusRunConfigurationType" />
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.ResTwithMigrationApplication">
+    <configuration name="RoleRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CompleteSecurity" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.backend.completesecurity.role.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.backend.completesecurity.role" />
+      <option name="MAIN_CLASS_NAME" value="org.backend.completesecurity.role.RoleRepositoryTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RoleRepositoryTest.testAssignUserToRole" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CompleteSecurity" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.backend.completesecurity.role.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.backend.completesecurity.role" />
+      <option name="MAIN_CLASS_NAME" value="org.backend.completesecurity.role.RoleRepositoryTest" />
+      <option name="METHOD_NAME" value="testAssignUserToRole" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RoleRepositoryTest.testCreateUserRoles" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CompleteSecurity" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.backend.completesecurity.role.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.backend.completesecurity.role" />
+      <option name="MAIN_CLASS_NAME" value="org.backend.completesecurity.role.RoleRepositoryTest" />
+      <option name="METHOD_NAME" value="testCreateUserRoles" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserRepositoryTest.testCreatUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CompleteSecurity" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.backend.completesecurity.user.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.backend.completesecurity.user" />
+      <option name="MAIN_CLASS_NAME" value="org.backend.completesecurity.user.UserRepositoryTest" />
+      <option name="METHOD_NAME" value="testCreatUser" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CompleteSecurityApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="CompleteSecurity" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.backend.completesecurity.CompleteSecurityApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ResTwithMigrationApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="RESTwithMigration" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.backend.rest.migration.ResTwithMigrationApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.RoleRepositoryTest.testAssignUserToRole" />
+        <item itemvalue="JUnit.UserRepositoryTest.testCreatUser" />
+        <item itemvalue="JUnit.RoleRepositoryTest" />
+        <item itemvalue="JUnit.RoleRepositoryTest.testCreateUserRoles" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.9-corretto-17.0.9-f644763e9732-220112af" />
+        <option value="jdk-21.0.1-openjdk-21.0.1-f644763e9732-76dd8dae" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="305228b0-4114-47d9-a15f-80297f0cdf51" name="Changes" comment="" />
+      <created>1711992427445</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1711992427445</updated>
+      <workItem from="1711992430382" duration="7925000" />
+      <workItem from="1712137630823" duration="3145000" />
+      <workItem from="1712222225747" duration="4094000" />
+      <workItem from="1712324950614" duration="4357000" />
+      <workItem from="1712493169999" duration="12157000" />
+      <workItem from="1712522691073" duration="1036000" />
+      <workItem from="1712589542983" duration="2544000" />
+      <workItem from="1712606316382" duration="1561000" />
+      <workItem from="1712693231505" duration="599000" />
+      <workItem from="1712847014033" duration="931000" />
+      <workItem from="1712868013225" duration="56000" />
+      <workItem from="1712924956024" duration="14000" />
+      <workItem from="1712949999393" duration="2395000" />
+      <workItem from="1713036840959" duration="4463000" />
+      <workItem from="1713115203608" duration="590000" />
+      <workItem from="1713116569513" duration="5000" />
+      <workItem from="1713210484088" duration="2503000" />
+      <workItem from="1713284805488" duration="3205000" />
+      <workItem from="1713293925890" duration="1973000" />
+      <workItem from="1713301157786" duration="2218000" />
+      <workItem from="1713365427187" duration="310000" />
+      <workItem from="1713365748899" duration="55000" />
+      <workItem from="1713365811457" duration="6000" />
+      <workItem from="1713365836820" duration="11000" />
+      <workItem from="1713366011287" duration="304000" />
+      <workItem from="1713366334223" duration="85000" />
+      <workItem from="1713366488598" duration="22000" />
+      <workItem from="1713366528329" duration="163000" />
+      <workItem from="1713366722732" duration="5000" />
+    </task>
+    <task id="LOCAL-00001" summary="hardening">
+      <option name="closed" value="true" />
+      <created>1712000350943</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1712000350943</updated>
+    </task>
+    <task id="LOCAL-00002" summary="blacklist">
+      <option name="closed" value="true" />
+      <created>1712226320375</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1712226320375</updated>
+    </task>
+    <task id="LOCAL-00003" summary="blacklist">
+      <option name="closed" value="true" />
+      <created>1712493333635</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1712493333635</updated>
+    </task>
+    <task id="LOCAL-00004" summary="redis and refresh token removal">
+      <option name="closed" value="true" />
+      <created>1712511690482</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1712511690482</updated>
+    </task>
+    <task id="LOCAL-00005" summary="rest &amp; flyway beginning">
+      <option name="closed" value="true" />
+      <created>1712523720315</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1712523720315</updated>
+    </task>
+    <task id="LOCAL-00006" summary="rest jwt token and security config">
+      <option name="closed" value="true" />
+      <created>1712607620376</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1712607620376</updated>
+    </task>
+    <task id="LOCAL-00007" summary="jwt filter">
+      <option name="closed" value="true" />
+      <created>1712952378738</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1712952378738</updated>
+    </task>
+    <task id="LOCAL-00008" summary="add jdbc&amp;jpa (postgresql)">
+      <option name="closed" value="true" />
+      <created>1713043077048</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1713043077048</updated>
+    </task>
+    <task id="LOCAL-00009" summary="register endpoint, encryption &amp; flyway beginning">
+      <option name="closed" value="true" />
+      <created>1713212939467</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1713212939467</updated>
+    </task>
+    <task id="LOCAL-00010" summary="flyway &amp; additional apis">
+      <option name="closed" value="true" />
+      <created>1713288660407</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1713288660407</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.conf" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="hardening" />
+    <MESSAGE value="blacklist" />
+    <MESSAGE value="redis and refresh token removal" />
+    <MESSAGE value="rest &amp; flyway beginning" />
+    <MESSAGE value="rest jwt token and security config" />
+    <MESSAGE value="jwt filter" />
+    <MESSAGE value="add jdbc&amp;jpa (postgresql)" />
+    <MESSAGE value="register endpoint, encryption &amp; flyway beginning" />
+    <MESSAGE value="flyway &amp; additional apis" />
+    <option name="LAST_COMMIT_MESSAGE" value="flyway &amp; additional apis" />
+  </component>
+</project>
