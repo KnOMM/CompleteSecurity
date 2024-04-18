@@ -1,98 +1,47 @@
 package org.example.jwt_authentication_and_authorization_with_tests.entity;
 
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
-import lombok.NoArgsConstructor;
-import org.bson.types.ObjectId;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.MongoId;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
-@Document
-@NoArgsConstructor
-public class User implements UserDetails {
-    private @MongoId ObjectId id;
+@Document(collation = "users")
+@Getter
+@Setter
+public class User {
+    @Id
+    private String id;
+
+    @NotBlank
+    @Size(max = 20)
     private String username;
+
+    @NotBlank
+    @Size(max = 50)
+    @Email
+    private String email;
+
+    @NotBlank
+    @Size(max = 120)
     private String password;
-    private Set<UserRole> userRoles;
 
-    public User(String username, String password, Set<GrantedAuthority> grantedAuthorities) {
+    @DBRef
+    private Set<Role> roles = new HashSet<>();
+
+    public User() {
+    }
+
+    public User(String username, String email, String password) {
         this.username = username;
+        this.email = email;
         this.password = password;
-        Set<UserRole> auths = new HashSet<>();
-
-        for (GrantedAuthority grantedAuthority : grantedAuthorities) {
-            userRoles.add(new UserRole(new Role(grantedAuthority.getAuthority())));
-        }
-        this.userRoles = auths;
-    }
-
-    public ObjectId getId() {
-        return id;
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setUserRoles(Set<UserRole> userRoles) {
-        this.userRoles = userRoles;
-    }
-
-    @Override
-    public Set<UserRole> getAuthorities() {
-        return this.userRoles;
-    }
-
-    @Override
-    public String getUsername() {
-        return this.username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return false;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return false;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
-        User user = (User) o;
-        return Objects.equals(username, user.username);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(username);
     }
 }

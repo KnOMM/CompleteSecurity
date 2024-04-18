@@ -1,14 +1,22 @@
 package org.example.jwt_authentication_and_authorization_with_tests.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection = "roles")
+@NoArgsConstructor
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 public class Role {
-    private String name;
+    @Id
+    private String id;
+    private ERole name;
+
+
+    public Role(ERole name) {
+        this.name = name;
+    }
 }

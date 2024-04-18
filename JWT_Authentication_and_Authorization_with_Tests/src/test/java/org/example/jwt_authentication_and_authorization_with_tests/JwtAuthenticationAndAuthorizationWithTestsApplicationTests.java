@@ -1,9 +1,6 @@
 package org.example.jwt_authentication_and_authorization_with_tests;
 
 
-import org.example.jwt_authentication_and_authorization_with_tests.entity.Role;
-import org.example.jwt_authentication_and_authorization_with_tests.entity.User;
-import org.example.jwt_authentication_and_authorization_with_tests.entity.UserRole;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,8 +33,8 @@ class MongoAuthApplicationIntegrationTest {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+//    @Autowired
+//    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     private MockMvc mvc;
 
@@ -55,33 +52,33 @@ class MongoAuthApplicationIntegrationTest {
                 .build();
     }
 
-    private void setUp() {
-        Role roleUser = new Role();
-        roleUser.setName("ROLE_USER");
-        mongoTemplate.save(roleUser);
-
-        User user = new User();
-        user.setUsername(USER_NAME);
-        user.setPassword(bCryptPasswordEncoder.encode(PASSWORD));
-
-        UserRole userRole = new UserRole();
-        userRole.setRole(roleUser);
-        user.setUserRoles(new HashSet<>(Collections.singletonList(userRole)));
-        mongoTemplate.save(user);
-
-        User admin = new User();
-        admin.setUsername(ADMIN_NAME);
-        admin.setPassword(bCryptPasswordEncoder.encode(PASSWORD));
-
-        Role roleAdmin = new Role();
-        roleAdmin.setName("ROLE_ADMIN");
-        mongoTemplate.save(roleAdmin);
-
-        UserRole adminRole = new UserRole();
-        adminRole.setRole(roleAdmin);
-        admin.setUserRoles(new HashSet<>(Collections.singletonList(adminRole)));
-        mongoTemplate.save(admin);
-    }
+//    private void setUp() {
+//        Role roleUser = new Role();
+//        roleUser.setName("ROLE_USER");
+//        mongoTemplate.save(roleUser);
+//
+//        User user = new User();
+//        user.setUsername(USER_NAME);
+//        user.setPassword(bCryptPasswordEncoder.encode(PASSWORD));
+//
+//        UserRole userRole = new UserRole();
+//        userRole.setRole(roleUser);
+//        user.setUserRoles(new HashSet<>(Collections.singletonList(userRole)));
+//        mongoTemplate.save(user);
+//
+//        User admin = new User();
+//        admin.setUsername(ADMIN_NAME);
+//        admin.setPassword(bCryptPasswordEncoder.encode(PASSWORD));
+//
+//        Role roleAdmin = new Role();
+//        roleAdmin.setName("ROLE_ADMIN");
+//        mongoTemplate.save(roleAdmin);
+//
+//        UserRole adminRole = new UserRole();
+//        adminRole.setRole(roleAdmin);
+//        admin.setUserRoles(new HashSet<>(Collections.singletonList(adminRole)));
+//        mongoTemplate.save(admin);
+//    }
 
     @Test
     void givenUserCredentials_whenInvokeUserAuthorizedEndPoint_thenReturn200() throws Exception {
