@@ -31,6 +31,32 @@ public class StoryRepositoryImpl implements StoryRepository{
         return null;
     }
 
+//    @Repository
+//public class StoryRepositoryImpl implements StoryRepository{
+//
+//    @PersistenceContext
+//    private EntityManager entityManager;
+//
+//    ...
+//
+//    @Override
+//    public Story findStoryById(Long storyId) {
+//        try {
+//
+//            Story story = (Story) entityManager.createNativeQuery("SELECT *  FROM stories WHERE ID =:storyId",Story.class)
+//                    .setParameter("storyId",storyId)
+//                    .getSingleResult();
+//
+//            System.out.println("fetched data from db");
+//            return story;
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//
+//        return null;
+//    }
+
+
     @Override
     public List<Story> getAllStories() {
         try {
@@ -54,4 +80,40 @@ public class StoryRepositoryImpl implements StoryRepository{
 
         return false;
     }
+
+//    @Override
+//    public List<Story> getAllStories() {
+//        try {
+//
+//            List<Story> storyList = entityManager.createNativeQuery("SELECT *  FROM stories",Story.class).getResultList();
+//
+//            return storyList;
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//
+//        return null;
+//    }
+//
+//    @Override
+//    public boolean createStory(Story story) {
+//        try {
+//
+//            transactionTemplate.execute(transactionStatus ->{
+//                entityManager.createNativeQuery("INSERT INTO stories(title, body) VALUES (:title, :body)")
+//                        .setParameter("title",story.getTitle())
+//                        .setParameter("body",story.getBody())
+//                        .executeUpdate();
+//                transactionStatus.flush();
+//                return null;
+//            });
+//
+//            return true;
+//
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//
+//        return false;
+//    }
 }
