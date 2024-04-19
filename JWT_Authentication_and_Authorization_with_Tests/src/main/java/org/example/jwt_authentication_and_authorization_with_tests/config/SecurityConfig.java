@@ -1,34 +1,90 @@
 package org.example.jwt_authentication_and_authorization_with_tests.config;
 
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
+import org.example.jwt_authentication_and_authorization_with_tests.entity.ERole;
+import org.example.jwt_authentication_and_authorization_with_tests.entity.Role;
+import org.example.jwt_authentication_and_authorization_with_tests.entity.User;
+import org.example.jwt_authentication_and_authorization_with_tests.repository.RoleRepository;
+import org.example.jwt_authentication_and_authorization_with_tests.repository.UserRepository;
+import org.example.jwt_authentication_and_authorization_with_tests.service.UserDetailsServiceImpl;
+import org.example.jwt_authentication_and_authorization_with_tests.utils.AuthEntryPointJwt;
+import org.example.jwt_authentication_and_authorization_with_tests.utils.AuthTokenFilter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
+
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity(
+        securedEnabled = true,
+        jsr250Enabled = true,
+        prePostEnabled = true
+)
 @RequiredArgsConstructor
+// securedEnabled = true enables @Secured annotation.
+//jsr250Enabled = true enables @RolesAllowed annotation.
+//prePostEnabled = true enables @PreAuthorize, @PostAuthorize, @PreFilter, @PostFilter annotations.
 public class SecurityConfig {
+
+    @Autowired
+    UserDetailsService userDetailsService;
+    @Autowired
+    AuthEntryPointJwt authEntryPointJwt;
+    @Autowired
+    AuthTokenFilter authTokenFilter;
+    @Autowired
+    UserRepository userRepository;
+    @Autowired
+    RoleRepository roleRepository;
+
+    @Bean
+    public AuthEntryPointJwt securityException401EntryPoint(){
+
+        return new AuthEntryPointJwt();
+    }
+
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
+                .exceptionHandling(exception -> exception
+                        .authenticationEntryPoint(securityException401EntryPoint()))
+//                        .authenticationEntryPoint((request, response, ex) -> {
+//                            response.sendError(
+//                                    HttpServletResponse.SC_UNAUTHORIZED,
+//                                    ex.getMessage()
+//                            );
+//                        }))
+
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize ->
-                        authorize.requestMatchers("api/v1/auth/**").permitAll()
-                                .requestMatchers("/api/test/**").permitAll()
+                        authorize.requestMatchers("/api/v1/auth/**").permitAll()
+                                .requestMatchers("/api/v1/test/all").permitAll()
                                 .anyRequest().authenticated());
+        http.authenticationProvider(authenticationProvider());
+
+        http.addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class);
+
         return http.build();
     }
 
@@ -51,4 +107,18 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+    @Bean
+    public CorsFilter corsFilter() {
+        UrlBasedCorsConfigurationSource source =
+                new UrlBasedCorsConfigurationSource();
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowCredentials(true);
+        config.addAllowedOrigin("*");
+        config.addAllowedHeader("*");
+        config.addAllowedMethod("*");
+        source.registerCorsConfiguration("/**", config);
+        return new CorsFilter(source);
+    }
+
 }

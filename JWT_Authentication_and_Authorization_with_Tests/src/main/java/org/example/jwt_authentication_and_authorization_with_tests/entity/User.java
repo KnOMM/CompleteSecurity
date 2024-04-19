@@ -13,7 +13,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collation = "users")
+@Document(collection = "users")
 @Getter
 @Setter
 public class User {
