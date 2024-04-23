@@ -90,6 +90,7 @@ public class AuthController {
 
         Set<Role> roles = new HashSet<>();
 
+        roleRepository.findAll().forEach(o -> System.out.println(o.toString()));
 
         Role userRole = roleRepository.findByName(ERole.ROLE_USER)
                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
@@ -101,7 +102,7 @@ public class AuthController {
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
-
+//
 //    @PostConstruct
 //    public void initUsers() {
 //        roleRepository.save(new Role(ERole.ROLE_USER));

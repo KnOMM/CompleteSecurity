@@ -29,7 +29,7 @@ public class TestController {
     @GetMapping("/mod")
     @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
     public ResponseEntity<String> moderatorAccess() {
-        return new ResponseEntity<>("Moderator Board.", HttpStatus.CREATED) ;
+        return new ResponseEntity<>("Moderator Board.", HttpStatus.OK) ;
     }
 
     @GetMapping("/admin")
