@@ -10,9 +10,11 @@ import org.example.jwt_authentication_and_authorization_with_tests.repository.Us
 import org.example.jwt_authentication_and_authorization_with_tests.service.UserDetailsServiceImpl;
 import org.example.jwt_authentication_and_authorization_with_tests.utils.AuthEntryPointJwt;
 import org.example.jwt_authentication_and_authorization_with_tests.utils.AuthTokenFilter;
+import org.example.jwt_authentication_and_authorization_with_tests.utils.Http401UnauthorizedEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -25,10 +27,12 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
+import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;
 
 
 @Configuration
@@ -56,9 +60,9 @@ public class SecurityConfig {
     RoleRepository roleRepository;
 
     @Bean
-    public AuthEntryPointJwt securityException401EntryPoint(){
+    public Http401UnauthorizedEntryPoint authenticationEntryPoint(){
 
-        return new AuthEntryPointJwt();
+        return new Http401UnauthorizedEntryPoint();
     }
 
 
@@ -67,7 +71,7 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .exceptionHandling(exception -> exception
-                        .authenticationEntryPoint(securityException401EntryPoint()))
+                        .authenticationEntryPoint(authenticationEntryPoint()))
 //                        .authenticationEntryPoint((request, response, ex) -> {
 //                            response.sendError(
 //                                    HttpServletResponse.SC_UNAUTHORIZED,
