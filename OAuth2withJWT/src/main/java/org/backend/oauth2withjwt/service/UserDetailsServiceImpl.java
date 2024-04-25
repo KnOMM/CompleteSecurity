@@ -26,6 +26,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         Optional<User> byUserName = userRepository.findByUserName(username);
         if (byUserName.isPresent()) {
             User user = byUserName.get();
+            UserDetails userDetails = new UserDetails() {
+            }
         }
         return null;
     }
