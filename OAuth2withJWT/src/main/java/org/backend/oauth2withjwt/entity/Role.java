@@ -3,9 +3,8 @@ package org.backend.oauth2withjwt.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "roles")
+//@Document(collection = "roles")
 @NoArgsConstructor
 @Data
 public class Role {

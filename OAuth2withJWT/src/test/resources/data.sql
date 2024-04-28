@@ -1,0 +1,1 @@
+INSERT INTO CashCardDB.cash_card(ID, AMOUNT) VALUES (99, 123.45);
