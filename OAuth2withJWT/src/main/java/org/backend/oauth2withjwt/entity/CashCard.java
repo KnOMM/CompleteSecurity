@@ -1,10 +1,20 @@
 package org.backend.oauth2withjwt.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-public record CashCard( @Id Long id, Double amount) {
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+public class CashCard {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
+    Double amount;
 }

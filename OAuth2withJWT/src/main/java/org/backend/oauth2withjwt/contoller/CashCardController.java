@@ -5,6 +5,7 @@ import org.backend.oauth2withjwt.entity.CashCard;
 import org.backend.oauth2withjwt.repository.CashCardRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.util.Optional;
@@ -18,16 +19,20 @@ public class CashCardController {
 
     @GetMapping("/{requestedId}")
     private ResponseEntity<CashCard> findById(@PathVariable Long requestedId) {
-        if (requestedId.equals(99L)) {
-            CashCard cashCard = new CashCard(99L, 123.45);
-            return ResponseEntity.ok(cashCard);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        Optional<CashCard> cashCardOptional = cashCardRepository.findById(requestedId);
+        return cashCardOptional
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PostMapping
-    private ResponseEntity<Void> createCashCard() {
-        return ResponseEntity.created(URI.create("/what/should/go/here?")).build();
+    @PostMapping // UriComponentsBuilder is automatically injected by IoC
+    private ResponseEntity<Void> createCashCard(@RequestBody CashCard newCashCardRequest, UriComponentsBuilder ucb) {
+
+        CashCard savedCashCard = cashCardRepository.save(newCashCardRequest);
+        URI locationOfNewCashCard = ucb
+                .path("cashcards/{id}")
+                .buildAndExpand(savedCashCard.getId())
+                .toUri();
+        return ResponseEntity.created(locationOfNewCashCard).build();
     }
 }
