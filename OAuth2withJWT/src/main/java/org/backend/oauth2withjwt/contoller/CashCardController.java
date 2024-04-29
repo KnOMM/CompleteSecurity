@@ -22,15 +22,18 @@ public class CashCardController {
         Optional<CashCard> cashCardOptional = cashCardRepository.findById(requestedId);
         return cashCardOptional
                 .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
+                .orElseGet(() -> ResponseEntity
+                        .notFound()
+                        .build());
     }
 
     @PostMapping // UriComponentsBuilder is automatically injected by IoC
-    private ResponseEntity<Void> createCashCard(@RequestBody CashCard newCashCardRequest, UriComponentsBuilder ucb) {
+//    @Transactional
+    public ResponseEntity<Void> createCashCard(@RequestBody CashCard newCashCardRequest, UriComponentsBuilder ucb) {
 
         CashCard savedCashCard = cashCardRepository.save(newCashCardRequest);
         URI locationOfNewCashCard = ucb
-                .path("cashcards/{id}")
+                .path("cashcards/{id}") // can be anything instead of id, but blank
                 .buildAndExpand(savedCashCard.getId())
                 .toUri();
         return ResponseEntity.created(locationOfNewCashCard).build();

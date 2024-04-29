@@ -1,9 +1,7 @@
 package org.backend.oauth2withjwt;
 
-import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
-import com.jayway.jsonpath.spi.json.JacksonJsonProvider;
 import org.backend.oauth2withjwt.entity.CashCard;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,14 +10,13 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.jdbc.Sql;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.net.URI;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@Transactional // @Sql rolls back after it
+//@Transactional // @Sql rolls back after it
 class CashCardApplicationTests {
     @Autowired
     TestRestTemplate restTemplate; // requests to the locally running application
@@ -56,5 +53,13 @@ class CashCardApplicationTests {
         URI locationOfNewCashCard = createResponse.getHeaders().getLocation();
         ResponseEntity<String> getResponse = restTemplate.getForEntity(locationOfNewCashCard, String.class);
         assertThat(getResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
+
+
+        DocumentContext documentContext = JsonPath.parse(getResponse.getBody());
+        Number id = documentContext.read("$.id");
+        Double amount = documentContext.read("$.amount");
+
+        assertThat(id).isNotNull();
+        assertThat(amount).isEqualTo(250.00);
     }
 }
