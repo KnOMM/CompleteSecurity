@@ -17,4 +17,5 @@ public class CashCard {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     Double amount;
+    String owner;
 }
