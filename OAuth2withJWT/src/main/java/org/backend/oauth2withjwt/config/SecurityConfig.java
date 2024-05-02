@@ -14,6 +14,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 @Configuration
 @EnableMethodSecurity
 @Slf4j
@@ -22,29 +25,55 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .cors(AbstractHttpConfigurer::disable)
-                .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests((authorize) -> authorize
-                        .anyRequest().permitAll()
-                )
-//                .httpBasic(Customizer.withDefaults())
-                .httpBasic(AbstractHttpConfigurer::disable)
-//                .formLogin(Customizer.withDefaults());
-                .formLogin(AbstractHttpConfigurer::disable);
+//        http
+//                .cors(AbstractHttpConfigurer::disable)
+//                .csrf(AbstractHttpConfigurer::disable)
+//                .authorizeHttpRequests((authorize) -> authorize
+//                        .anyRequest().permitAll()
+//                )
+////                .httpBasic(Customizer.withDefaults())
+//                .httpBasic(AbstractHttpConfigurer::disable)
+////                .formLogin(Customizer.withDefaults());
+//                .formLogin(AbstractHttpConfigurer::disable);
 
+
+        // TODO
+        http
+                .authorizeHttpRequests(request -> request
+                        .requestMatchers("/cashcards/**")
+                        .authenticated())
+                .httpBasic(Customizer.withDefaults())
+                .csrf(AbstractHttpConfigurer::disable);
         return http.build();
+
+    }
+
+    // TODO
+//    @Bean
+//    public UserDetailsService userDetailsService() {
+//        UserDetails userDetails = User.withDefaultPasswordEncoder()
+//                .username("user")
+//                .password("password")
+//                .roles("USER")
+//                .build();
+//
+//        return new InMemoryUserDetailsManager(userDetails);
+//    }
+
+    @Bean
+    UserDetailsService testOnlyUsers(PasswordEncoder passwordEncoder) {
+        User.UserBuilder users = User.builder();
+        UserDetails sarah = users
+                .username("sarah1")
+                .password(passwordEncoder.encode("abc123"))
+                .roles() // No roles for now
+                .build();
+        return new InMemoryUserDetailsManager(sarah);
     }
 
     @Bean
-    public UserDetailsService userDetailsService() {
-        UserDetails userDetails = User.withDefaultPasswordEncoder()
-                .username("user")
-                .password("password")
-                .roles("USER")
-                .build();
-
-        return new InMemoryUserDetailsManager(userDetails);
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
 }

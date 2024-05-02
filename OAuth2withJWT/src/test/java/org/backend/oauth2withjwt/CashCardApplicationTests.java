@@ -26,9 +26,11 @@ class CashCardApplicationTests {
     TestRestTemplate restTemplate; // requests to the locally running application
 
     @Test
-    @Sql("/data.sql")
+//    @Sql("/data.sql")
     void shouldReturnACashCardWhenDataIsSaved() {
-        ResponseEntity<String> response = restTemplate.getForEntity("/cashcards/99", String.class);
+        ResponseEntity<String> response = restTemplate
+                .withBasicAuth("sarah1", "abc123")
+                .getForEntity("/cashcards/99", String.class);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         DocumentContext documentContext = JsonPath.parse(response.getBody()); // converts JSON string into JSON-aware object
@@ -119,5 +121,18 @@ class CashCardApplicationTests {
 
         JSONArray amounts = documentContext.read("$..amount");
         assertThat(amounts).containsExactly(123.45, 250.0, 250.00);
+    }
+
+    @Test
+    void shouldNotReturnACashCardWhenUsingBadCredentials() {
+        ResponseEntity<String> response = restTemplate
+                .withBasicAuth("BAD-USER", "abc123")
+                .getForEntity("/cashcards/99", String.class);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.UNAUTHORIZED);
+
+        response = restTemplate
+                .withBasicAuth("sarah1", "BAD-PASSWORD")
+                .getForEntity("/cashcards/99", String.class);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.UNAUTHORIZED);
     }
 }
