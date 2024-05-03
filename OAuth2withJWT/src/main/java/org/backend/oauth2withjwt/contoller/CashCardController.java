@@ -8,6 +8,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -33,7 +34,6 @@ public class CashCardController {
     }
 
     @PostMapping // UriComponentsBuilder is automatically injected by IoC
-//    @Transactional
     public ResponseEntity<Void> createCashCard(@RequestBody CashCard newCashCardRequest, UriComponentsBuilder ucb) {
 
         CashCard savedCashCard = cashCardRepository.save(newCashCardRequest);
