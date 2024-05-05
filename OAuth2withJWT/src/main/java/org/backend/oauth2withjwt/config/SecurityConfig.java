@@ -37,7 +37,6 @@ public class SecurityConfig {
 //                .formLogin(AbstractHttpConfigurer::disable);
 
 
-        // TODO
         http
                 .authorizeHttpRequests(request -> request
                         .requestMatchers("/cashcards/**")
