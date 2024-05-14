@@ -1,12 +1,13 @@
 package org.backend.oauth2withjwt.repository;
 
-import org.backend.oauth2withjwt.entity.ERole;
 import org.backend.oauth2withjwt.entity.Role;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
+import java.util.UUID;
 
-//@Repository
-//public interface RoleRepository extends MongoRepository<Role, String> {
-//    Optional<Role> findByName(ERole name);
-//}
+@Repository
+public interface RoleRepository extends JpaRepository<Role, UUID> {
+    Optional<Role> findByAuthority(String authority);
+}

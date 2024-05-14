@@ -1,11 +1,14 @@
 package org.backend.oauth2withjwt.repository;
 
-import java.util.Optional;
-import org.backend.oauth2withjwt.entity.User;
+import org.backend.oauth2withjwt.entity.ApplicationUser;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-//@Repository
-//public interface UserRepository extends MongoRepository<User, String> {
-//    boolean existsByUserName(String username);
-//    Optional<User> findByUserName(String username);
-//}
+import java.util.Optional;
+import java.util.UUID;
+
+@Repository
+public interface UserRepository extends JpaRepository<ApplicationUser, UUID> {
+    boolean existsByUsername(String username);
+    Optional<ApplicationUser> findByUsername(String username);
+}

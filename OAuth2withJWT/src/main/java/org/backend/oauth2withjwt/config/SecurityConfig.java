@@ -17,10 +17,11 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+
 @Configuration
 @EnableMethodSecurity
-@Slf4j
 @EnableWebSecurity
+@Slf4j
 public class SecurityConfig {
 
     @Bean
@@ -40,7 +41,9 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(request -> request
                         .requestMatchers("/cashcards/**")
-                        .hasRole("CARD-OWNER"))
+                        .hasRole("CARD-OWNER")
+                        .requestMatchers("/**")
+                        .authenticated())
                 .httpBasic(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable);
         return http.build();
@@ -50,7 +53,7 @@ public class SecurityConfig {
     // TODO
 //    @Bean
 //    public UserDetailsService userDetailsService() {
-//        UserDetails userDetails = User.withDefaultPasswordEncoder()
+//        UserDetails userDetails = ApplicationUser.withDefaultPasswordEncoder()
 //                .username("user")
 //                .password("password")
 //                .roles("USER")
