@@ -1,7 +1,7 @@
 create table users
 (
     user_id   BINARY(16) primary key,
-    username varchar(100) not null,
+    username varchar(100) not null unique,
     password varchar(128) not null
 );
 

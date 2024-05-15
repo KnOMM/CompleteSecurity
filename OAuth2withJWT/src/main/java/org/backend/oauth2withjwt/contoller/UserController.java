@@ -12,6 +12,6 @@ public class UserController {
 
     @GetMapping("/")
     public String helloUserController() {
-        return "ApplicationUser lever access!!!";
+        return "ApplicationUser level access!!!";
     }
 }

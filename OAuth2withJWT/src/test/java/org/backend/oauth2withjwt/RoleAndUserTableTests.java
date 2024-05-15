@@ -4,6 +4,7 @@ import org.backend.oauth2withjwt.entity.ApplicationUser;
 import org.backend.oauth2withjwt.entity.Role;
 import org.backend.oauth2withjwt.repository.RoleRepository;
 import org.backend.oauth2withjwt.repository.UserRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -13,9 +14,10 @@ import org.springframework.test.annotation.Rollback;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -29,6 +31,16 @@ public class RoleAndUserTableTests {
 
     @Autowired
     private UserRepository userRepository;
+
+    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+    @BeforeEach
+    public void setUp() {
+
+        ApplicationUser admin = new ApplicationUser( );
+        admin.setUsername("admin");
+        admin.setPassword(passwordEncoder.encode("admin"));
+    }
 
     @Test
     public void testCreateUserRolesIfNotExist() {
@@ -63,7 +75,7 @@ public class RoleAndUserTableTests {
 
     @Test
     public void testUserCreationIfNotExist() {
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
         if (userRepository.findByUsername("admin").isEmpty()) {
             ApplicationUser admin = new ApplicationUser( );
             admin.setUsername("admin");
@@ -71,10 +83,29 @@ public class RoleAndUserTableTests {
             userRepository.save(admin);
         }
 
-        assertEquals(userRepository.findAll().size(), 1);
+        if (userRepository.findByUsername("sarah1").isEmpty()) {
+            ApplicationUser admin = new ApplicationUser( );
+            admin.setUsername("sarah1");
+            admin.setPassword(passwordEncoder.encode("abc123"));
+            userRepository.save(admin);
+        }
+
+        assertEquals(userRepository.findAll().size(), 2);
         Optional<ApplicationUser> admin = userRepository.findByUsername("admin");
 
         assertThat(admin.orElseThrow().getUsername()).isEqualTo("admin");
+    }
+
+    @Test
+    public void testUserRoleMapping() {
+
+        ApplicationUser admin = userRepository.findByUsername("admin").orElseThrow(RuntimeException::new);
+        Role roleAdmin = roleRepository.findByAuthority("ROLE_ADMIN").orElseThrow(RuntimeException::new);
+        Set<Role> roles = new HashSet<>();
+        roles.add(roleAdmin);
+        admin.setAuthorities(roles);
+
+        assertThat(userRepository.findByUsername("admin").get().getAuthorities().contains(roleAdmin));
     }
 
 }
