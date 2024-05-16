@@ -1,7 +1,7 @@
 create table roles
 (
     role_id   BINARY(16) primary key,
-    authority ENUM ('ROLE_USER', 'ROLE_MODERATOR', 'ROLE_ADMIN') not null
+    authority ENUM ('USER', 'MODERATOR', 'ADMIN') not null
 );
 
 DELIMITER //

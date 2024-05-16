@@ -44,21 +44,21 @@ public class RoleAndUserTableTests {
 
     @Test
     public void testCreateUserRolesIfNotExist() {
-        if ( roleRepository.findByAuthority("ROLE_ADMIN").isEmpty()) {
+        if ( roleRepository.findByAuthority("ADMIN").isEmpty()) {
             Role admin = new Role();
-            admin.setAuthority("ROLE_ADMIN");
+            admin.setAuthority("ADMIN");
             roleRepository.save(admin);
         }
 
-        if (roleRepository.findByAuthority("ROLE_MODERATOR").isEmpty()) {
+        if (roleRepository.findByAuthority("MODERATOR").isEmpty()) {
             Role moderator = new Role();
-            moderator.setAuthority("ROLE_MODERATOR");
+            moderator.setAuthority("MODERATOR");
             roleRepository.save(moderator);
         }
 
-        if (roleRepository.findByAuthority("ROLE_USER").isEmpty()) {
+        if (roleRepository.findByAuthority("USER").isEmpty()) {
             Role user = new Role();
-            user.setAuthority("ROLE_USER");
+            user.setAuthority("USER");
             roleRepository.save(user);
         }
 
@@ -100,7 +100,7 @@ public class RoleAndUserTableTests {
     public void testUserRoleMapping() {
 
         ApplicationUser admin = userRepository.findByUsername("admin").orElseThrow(RuntimeException::new);
-        Role roleAdmin = roleRepository.findByAuthority("ROLE_ADMIN").orElseThrow(RuntimeException::new);
+        Role roleAdmin = roleRepository.findByAuthority("ADMIN").orElseThrow(RuntimeException::new);
         Set<Role> roles = new HashSet<>();
         roles.add(roleAdmin);
         admin.setAuthorities(roles);
