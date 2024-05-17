@@ -50,7 +50,7 @@ public class AuthenticationService {
             String token = tokenService.generateJwt(auth);
             return new LoginResponseDTO(userRepository.findByUsername(username).get(), token);
         } catch (Exception e) {
-            return new LoginResponseDTO(null, "");
+            return null;
         }
     }
 }

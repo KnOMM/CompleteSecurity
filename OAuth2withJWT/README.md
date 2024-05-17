@@ -8,3 +8,5 @@
 ```commandline
  mvn clean flyway:migrate
 ```
+
+### @ResponseStatus vs @ExceptionHandler vs @ControllerAdvice

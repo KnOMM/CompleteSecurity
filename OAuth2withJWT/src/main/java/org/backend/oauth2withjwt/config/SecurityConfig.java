@@ -64,6 +64,7 @@ public class SecurityConfig {
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/error").permitAll()
                         .anyRequest().authenticated())
 //                .httpBasic(Customizer.withDefaults())
                 .oauth2ResourceServer(

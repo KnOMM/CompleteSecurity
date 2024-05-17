@@ -21,6 +21,7 @@ public class ApplicationUser implements UserDetails {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "user_id")
     private UUID id;
+    @Column(unique = true)
     private String username;
     private String password;
 
