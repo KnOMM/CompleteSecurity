@@ -28,8 +28,7 @@ public class AuthenticationController {
 //        if (savedApplicationUser != null) {
 //
 //        }
-//        URI locationOfNew
-//        t
+//
 
         return ResponseEntity.ok().build();
     }
