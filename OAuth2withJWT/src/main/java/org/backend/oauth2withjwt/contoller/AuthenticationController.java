@@ -25,10 +25,7 @@ public class AuthenticationController {
     public ResponseEntity<ApplicationUser> registerUser(@RequestBody RegistrationDTO body, UriComponentsBuilder uriComponentsBuilder, Principal principal) {
         ApplicationUser newApplicationUser = new ApplicationUser(body.getUsername(), body.getPassword());
         ApplicationUser savedApplicationUser = authenticationService.registerUser(body.getUsername(), body.getPassword());
-//        if (savedApplicationUser != null) {
-//
-//        }
-//
+
 
         return ResponseEntity.ok().build();
     }
