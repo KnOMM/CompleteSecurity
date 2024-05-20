@@ -35,7 +35,6 @@ public class AuthenticationController {
         LoginResponseDTO loginResponseDTO = authenticationService.loginUser(body.getUsername(), body.getPassword());
         System.out.println(loginResponseDTO);
         if (loginResponseDTO == null) throw new CustomUserAlreadyExistsError();
-//        if (loginResponseDTO == null) throw new RuntimeException();
         System.out.println(loginResponseDTO);
         return ResponseEntity.ok(loginResponseDTO);
     }
