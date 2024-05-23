@@ -1,17 +1,20 @@
 package org.backend.oauth2withjwt.contoller;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.backend.oauth2withjwt.dto.LoginResponseDTO;
 import org.backend.oauth2withjwt.dto.RegistrationDTO;
 import org.backend.oauth2withjwt.entity.ApplicationUser;
-import org.backend.oauth2withjwt.error.CustomUserAlreadyExistsError;
+import org.backend.oauth2withjwt.error.CustomUserAlreadyExistsStatus;
+import org.backend.oauth2withjwt.error.ErrorInfo;
+import org.backend.oauth2withjwt.error.MyBadDataException;
 import org.backend.oauth2withjwt.service.AuthenticationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.io.IOException;
 import java.security.Principal;
 
 @RestController
@@ -31,12 +34,20 @@ public class AuthenticationController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponseDTO> loginUser(@RequestBody RegistrationDTO body) {
+    public ResponseEntity<LoginResponseDTO> loginUser(@RequestBody RegistrationDTO body) throws MyBadDataException {
         LoginResponseDTO loginResponseDTO = authenticationService.loginUser(body.getUsername(), body.getPassword());
-        System.out.println(loginResponseDTO);
-        if (loginResponseDTO == null) throw new CustomUserAlreadyExistsError();
+//        if (loginResponseDTO == null) throw new MyBadDataException();
+        if (loginResponseDTO == null) throw new IllegalArgumentException();
+//        if (loginResponseDTO == null) throw new CustomUserAlreadyExistsStatus();
         System.out.println(loginResponseDTO);
         return ResponseEntity.ok(loginResponseDTO);
+    }
+
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    @ExceptionHandler(MyBadDataException.class)
+    @ResponseBody ErrorInfo
+    handleBadRequest(HttpServletRequest req, Exception ex) {
+        return new ErrorInfo(req.getRequestURL().toString(), ex);
     }
 
 }

@@ -108,6 +108,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>spring_rest_docker</finalName>
     </build>
 
 </project>

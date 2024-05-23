@@ -13,6 +13,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 
+import java.util.Objects;
+
 import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.AFTER_TEST_METHOD;
 import static org.springframework.test.context.jdbc.SqlConfig.TransactionMode.ISOLATED;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -48,11 +50,13 @@ public class ApplicationUserAuthTests {
         ResponseEntity<String> responseUsername = restTemplate
                 .postForEntity("/auth/login", loginUser, String.class);
         assertThat(responseUsername.getStatusCode()).isEqualTo(HttpStatus.UNAUTHORIZED);
+        assertThat(responseUsername.getBody()).isEqualTo("Error from controller advice");
 
         RegistrationDTO badLoginUser = new RegistrationDTO("bad-user", "password");
         ResponseEntity<String> responsePassword = restTemplate
                 .postForEntity("/auth/login", badLoginUser, String.class);
         assertThat(responsePassword.getStatusCode()).isEqualTo(HttpStatus.UNAUTHORIZED);
+        assertThat(responsePassword.getBody()).isEqualTo("Error from controller advice");
 
     }
 
