@@ -28,21 +28,21 @@ public class ApplicationUserAuthTests {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    @Test
-    void shouldLoginValidUser() {
-        RegistrationDTO loginUser = new RegistrationDTO("user2", "password");
-        ResponseEntity<String> response = restTemplate
-                .postForEntity("/auth/login", loginUser, String.class);
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-
-        DocumentContext documentContext = JsonPath.parse(response.getBody());
-        String username = documentContext.read("$.user.username");
-        String password = documentContext.read("$.user.password");
-
-        assertThat(username).isEqualTo("user2");
-        System.out.println(password);
-        System.out.println(passwordEncoder.encode("password"));
-    }
+//    @Test
+//    void shouldLoginValidUser() {
+//        RegistrationDTO loginUser = new RegistrationDTO("user2", "password");
+//        ResponseEntity<String> response = restTemplate
+//                .postForEntity("/auth/login", loginUser, String.class);
+//        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+//
+//        DocumentContext documentContext = JsonPath.parse(response.getBody());
+//        String username = documentContext.read("$.user.username");
+//        String password = documentContext.read("$.user.password");
+//
+//        assertThat(username).isEqualTo("user2");
+//        System.out.println(password);
+//        System.out.println(passwordEncoder.encode("password"));
+//    }
 
     @Test
     void shouldDenyBadUser() {

@@ -108,7 +108,7 @@
                 </configuration>
             </plugin>
         </plugins>
-        <finalName>spring_rest_docker</finalName>
+        <finalName>crudapp</finalName>
     </build>
 
 </project>

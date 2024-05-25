@@ -5,6 +5,7 @@ import org.backend.oauth2withjwt.entity.Role;
 import org.backend.oauth2withjwt.repository.RoleRepository;
 import org.backend.oauth2withjwt.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -62,7 +63,7 @@ public class RoleAndUserTableTests {
             roleRepository.save(user);
         }
 
-        System.out.println(roleRepository.findAll());
+//        System.out.println(roleRepository.findAll());
 
         List<Role> roles = roleRepository.findAll();
         Role[] arrayRoles = roles.toArray(new Role[0]);
@@ -97,6 +98,7 @@ public class RoleAndUserTableTests {
     }
 
     @Test
+    @Order(16)
     public void testUserRoleMapping() {
 
         ApplicationUser admin = userRepository.findByUsername("admin").orElseThrow(RuntimeException::new);

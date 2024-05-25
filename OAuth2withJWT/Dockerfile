@@ -1,6 +1,7 @@
-FROM maven:3.8.3-openjdk-17 AS build
-COPY src /home/app/src
-COPY pom.xml /home/app
-RUN mvn -f /home/app/pom.xml clean package
+FROM openjdk:19-jdk
+
+COPY target/crudapp.jar .
+
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","/home/app/target/spring_rest_docker.jar"]
+
+ENTRYPOINT ["java", "-jar", "crudapp.jar"]

@@ -39,7 +39,7 @@ public class AuthenticationController {
 //        if (loginResponseDTO == null) throw new MyBadDataException();
         if (loginResponseDTO == null) throw new IllegalArgumentException();
 //        if (loginResponseDTO == null) throw new CustomUserAlreadyExistsStatus();
-        System.out.println(loginResponseDTO);
+//        System.out.println(loginResponseDTO);
         return ResponseEntity.ok(loginResponseDTO);
     }
 
