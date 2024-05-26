@@ -76,6 +76,27 @@ To remove unused volumes:
 ```commandline
 sudo docker volume prune
 ```
+#### Building
+Pulling mysql image:
+```commandline
+sudo docker pull mysql
+```
+Running mysql image:
+```commandline
+sudo docker run -p 3307:3306 --name mysqlcontainer -e MYSQL_ROOT_PASSWORD=rootroot -e MYSQL_DATABASE=CashCardDB -d mysql
+```
+Creating a network for containers and connecting to it:
+```commandline
+sudo docker network create networkmysql
+sudo docker network connect networkmysql mysqlcontainer 
+```
+> **_NOTE:_** Clean and install your Spring project.
 
+Building image from Dockerfile:
+```commandline
 sudo docker build -t crudimage .
+```
+Running the program image:
+```commandline
 sudo docker run -p 8090:8080 --name crudcontainer --net networkmysql -e MYSQL_HOST=mysqlcontainer -e MYSQL_PORT=3306 -e MYSQL_DB_NAME=CashCardDB -e MYSQL_USER=root -e MYSQL_PASSWORD=rootroot crudimage
+```
