@@ -100,3 +100,28 @@ Running the program image:
 ```commandline
 sudo docker run -p 8090:8080 --name crudcontainer --net networkmysql -e MYSQL_HOST=mysqlcontainer -e MYSQL_PORT=3306 -e MYSQL_DB_NAME=CashCardDB -e MYSQL_USER=root -e MYSQL_PASSWORD=rootroot crudimage
 ```
+### Error Handling
+![img_2.png](img_2.png)
+Add maven dependency:
+```xml
+<dependency>
+   <groupId>com.fasterxml.jackson.datatype</groupId>
+   <artifactId>jackson-datatype-jsr310</artifactId>
+</dependency>
+```
+Jackson JSR310 converters. They convert Java date and time classes to JSON representation using the @JsonFormat annotation
+
+### Resources:
+Error Handling: 
+* https://docs.spring.io/spring-framework/reference/web/webmvc/mvc-controller/ann-advice.html
+* https://www.toptal.com/java/spring-boot-rest-api-error-handling
+* https://www.baeldung.com/exception-handling-for-rest-with-spring
+
+Dockerization:
+* https://www.youtube.com/watch?v=thLhAhPx8ww
+
+CashCards Project:
+* https://spring.academy/courses/building-a-rest-api-with-spring-boot
+
+Spring Security (JWT):
+* https://www.youtube.com/watch?v=TeBt0Ike_Tk

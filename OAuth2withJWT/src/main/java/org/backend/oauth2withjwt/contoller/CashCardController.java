@@ -1,5 +1,6 @@
 package org.backend.oauth2withjwt.contoller;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.backend.oauth2withjwt.entity.CashCard;
 import org.backend.oauth2withjwt.repository.CashCardRepository;
@@ -29,9 +30,7 @@ public class CashCardController {
         Optional<CashCard> cashCardOptional = Optional.ofNullable(cashCardRepository.findByIdAndOwner(requestedId, principal.getName()));
         return cashCardOptional
                 .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity
-                        .notFound()
-                        .build());
+                .orElseThrow(EntityNotFoundException::new); // uses custom Exception Handler in ResExceptionHandler class
     }
 
     @PostMapping // UriComponentsBuilder is automatically injected by IoC
