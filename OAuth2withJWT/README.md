@@ -1,3 +1,27 @@
+# CashCards - Restful API Project
+
+## Overview
+
+Implemented a robust Restful API project "CashCards" utilizing Java Spring, focused on secure financial transactions. This project showcases a variety of key features and best practices in modern software development.
+
+## Features
+
+- **Test-Driven Development (TDD)**: Applied TDD principles to ensure code reliability and quality through rigorous testing.
+- **Database Management**: Managed database version control with Flyway migrations and integrated MySQL for efficient data handling.
+- **Security**: Designed and enforced role-based authentication and authorization mechanisms to safeguard user information and ensure proper access control.
+- **Error Handling**: Emphasized comprehensive error handling to enhance system stability and user experience.
+- **Dockerized Solution**: Provided a Dockerized solution to streamline deployment and ensure consistency across environments.
+
+## Technologies Used
+
+- Java Spring
+- MySQL
+- Flyway
+- Docker
+- JWT for Authentication and Authorization
+
+## Notes
+
 ### POST, PUT, PATCH and CRUD Operations - Summary
 ![img.png](img.png)
 
@@ -111,7 +135,7 @@ Add maven dependency:
 ```
 Jackson JSR310 converters. They convert Java date and time classes to JSON representation using the @JsonFormat annotation
 
-### Resources:
+## Resources:
 Error Handling: 
 * https://docs.spring.io/spring-framework/reference/web/webmvc/mvc-controller/ann-advice.html
 * https://www.toptal.com/java/spring-boot-rest-api-error-handling
