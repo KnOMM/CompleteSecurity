@@ -3,6 +3,9 @@
 
 ## Overview
 
+![graph3(1)](https://github.com/user-attachments/assets/6b9f7ba6-f41c-465f-9f3c-3e7423f89047)
+
+
 This project implements a robust back-end system featuring authentication and authorization mechanisms. The core components include Spring, MySQL, and Redis, ensuring a secure, scalable, and efficient application.
 
 ## Features
